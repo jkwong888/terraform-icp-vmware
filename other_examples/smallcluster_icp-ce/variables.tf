@@ -6,22 +6,12 @@ variable "vsphere_server" {
   default = "___INSERT YOUR OWN____" 
 }
 
-variable "vsphere_user" {
-  description = "Username to authenticate against vsphere"
-  default     = "___INSERT YOUR OWN____"
-}
-
-variable "vsphere_password" { 
-  description = "Password to authenticate against vsphere"
-  default = "___INSERT YOUR OWN____" 
-}
+# Set username/password as environment variables VSPHERE_USER and VSPHERE_PASSWORD
 
 variable "allow_unverified_ssl" { 
   description = "Allows terraform vsphere provider to communicate with vsphere servers with self signed certificates"
   default = "true" 
 } 
-
-
 
 ##############################################
 ##### vSphere deployment specifications ######
@@ -32,12 +22,12 @@ variable "vsphere_datacenter" {
   default     = "___INSERT YOUR OWN____" 
 }
 
-variable "cluster" { 
+variable "vsphere_cluster" { 
   description = "Name of vsphere cluster to deploy to"
   default     = "___INSERT YOUR OWN____"
 }
 
-variable "resource_pool" { 
+variable "vsphere_resource_pool" { 
   description = "Path of resource pool to deploy to. i.e. <DC>/Resources/<pool name>"
   default     = "___INSERT YOUR OWN____" 
 }
@@ -143,6 +133,10 @@ variable "worker" {
   }
 }
 
+variable "icp_version" {
+  description = "Supports the format 'org/repo:version', as well as just '2.1.0.X' version. 'ibmcom/icp-inception:2.1.0.3' and '2.1.0.3' provide the same outcome."
+  default     = "2.1.0.3"
+}
 
 variable "icppassword" { 
   description = "Password for the initial admin user in ICP"

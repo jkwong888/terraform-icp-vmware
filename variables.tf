@@ -6,15 +6,7 @@ variable "vsphere_server" {
   default     = "___INSERT YOUR OWN____"
 }
 
-variable "vsphere_user" {
-  description = "Username to authenticate against vsphere"
-  default     = "___INSERT YOUR OWN____"
-}
-
-variable "vsphere_password" {
-  description = "Password to authenticate against vsphere"
-  default     = "___INSERT YOUR OWN____"
-}
+# Set username/password as environment variables VSPHERE_USER and VSPHERE_PASSWORD
 
 variable "allow_unverified_ssl" {
   description = "Allows terraform vsphere provider to communicate with vsphere servers with self signed certificates"
@@ -230,7 +222,7 @@ variable "docker_package_location" {
 }
 
 variable "image_location" {
-  description = "URI for image package location, e.g. http://<myhost>/ibm-cloud-private-x86_64-2.1.0.2.tar.gz or nfs:<myhost>/ibm-cloud-private-x86_64-2.1.0.2.tar.gz"
+  description = "URI for image package location, e.g. http://<myhost>/ibm-cloud-private-x86_64-2.1.0.3.tar.gz or nfs:<myhost>/ibm-cloud-private-x86_64-2.1.0.3.tar.gz"
   default     = ""
 }
 
@@ -281,16 +273,30 @@ variable "ssh_keyfile" {
 
 variable "icp_inception_image" {
   description = "ICP image to use for installation"
-  default     = "ibmcom/icp-inception:2.1.0.2-ee"
+  default     = "ibmcom/icp-inception:2.1.0.3-ee"
 }
 
 variable "network_cidr" {
-  description = "Pod network CIDR "
+  description = "Pod network CIDR"
   default     = "192.168.0.0/16"
 }
 
-
 variable "service_network_cidr" {
-  description = "Service network CIDR "
+  description = "Service network CIDR"
   default     = "10.10.10.0/24"
+}
+
+variable "disable_istio" {
+  description = "Disable Istio"
+  default     = "false"
+}
+
+variable "disable_custom_metrics_adapter" {
+  description = "Disable Custom Metrics Adapter"
+  default     = "false"
+}
+
+variable "parallel_image_pull" {
+  description = "Parallel Image Pull"
+  default     = "false"
 }
